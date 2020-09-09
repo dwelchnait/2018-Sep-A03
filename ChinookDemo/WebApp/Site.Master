@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -36,8 +36,8 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <%-- supplied startup menu --%>
+<%--        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -71,7 +71,75 @@
                     </asp:LoginView>
                 </div>
             </div>
+        </div>--%>
+        <%-- Add a workable Bootstrap 4 menu --%>
+        <div class="container">
+      <div class="navbar navbar-inverse">
+          <nav class="navbar navbar-expand-md navbar-light fixed-top">
+              <a class="navbar-brand" href="Default.aspx" runat="server">
+                        <strong>Chinook</strong>
+              </a>
+              <button class="navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#navbarMenuName"
+                        aria-controls="navbarMenuName" aria-expanded="false"
+                        aria-label="Toggle Navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarMenuName">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link" href="~/Default.aspx"
+                                    style="color:black" runat="server">Home</a>
+                       </li>
+                       <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#"
+                                    id="navbarSubMenu" data-toggle="dropdown" 
+                                    runat="server" style="color:black"
+                                    aria-haspopup="true" aria-expanded="false"> 
+                                Samples</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarSubMenu">
+                                <a class="dropdown-item"
+                                        href="~/SamplePages/TestPage.aspx"
+                                        style="color:black" runat="server">
+                                   Test Page</a>
+                            </div>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="~/Contact.aspx" runat="server"
+                                    style="color:black">Contact</a>
+                          </li>
+                          <li class="nav-item">
+                             <a class="nav-link" href="~/About.aspx" runat="server"
+                                    style="color:black">About</a>
+                           </li>
+                        </ul>
+                    </div>
+                    <div style="padding-right:50px">
+                        <asp:LoginView runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" href="~/Account/Register"
+                                              style="color:black">Register</a></li>&nbsp;&nbsp;
+                                    <li><a runat="server" href="~/Account/Login" style="color:black">Log in</a></li>
+                                </ul>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" href="~/Account/Manage" title="Manage your account"
+                                            style="color:black">Hello, <%: Context.User.Identity.GetUserName()  %> !
+                                        </a></li>&nbsp;&nbsp;
+                                    <li>
+                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off"
+                                               LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    </li>
+                                </ul>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </div>
+                </nav> 
+            </div>
         </div>
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
