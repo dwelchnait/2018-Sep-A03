@@ -55,6 +55,7 @@
     <Compile Include="DAL\ChinookSystemContext.cs" />
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\Artist.cs" />
+    <Compile Include="Entities\Track.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\dummy.cs" />
   </ItemGroup>
