@@ -20,6 +20,8 @@ namespace ChinookSystem.Entities
         [Required(ErrorMessage = "Track Name is required")]
         [StringLength(200, ErrorMessage = "Track Name is limited to 200 characters.")]
         public string Name { get; set; }
+
+        //auto implemented property
         public int? AlbumId { get; set; }
         public int MediaTypeId { get; set; }
         public int? GenreId { get; set; }
@@ -33,5 +35,8 @@ namespace ChinookSystem.Entities
         public decimal UnitPrice { get; set; }
 
         public virtual Album Album { get; set; }
+
+        //track has a MediaType
+        public virtual MediaType MediaType { get; set; }
     }
 }
