@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 using ChinookSystem.DAL;
 using ChinookSystem.Entities;
 using ChinookSystem.ViewModels;
-using System.ComponentModel;
+using System.ComponentModel; //need for wizard implementation of ObjectDataSource
 #endregion
 
 namespace ChinookSystem.BLL
 {
+    //expose the library class for the wizard
+    [DataObject]
     public class ArtistController
     {
+        //expose the class method for the wizard
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<SelectionList> Artist_List()
         {
             using(var context = new ChinookSystemContext())
