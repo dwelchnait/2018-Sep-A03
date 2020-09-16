@@ -15,11 +15,13 @@
     <div class="row">
         <asp:GridView ID="AlbumArtistList" runat="server"
             CssClass="table table-striped" GridLines="Horizontal" BorderStyle="None" 
-            AutoGenerateColumns="False">
+            AutoGenerateColumns="False" OnSelectedIndexChanged="AlbumArtistList_SelectedIndexChanged">
             <Columns>
-                <asp:TemplateField HeaderText="ID">
+                <asp:CommandField SelectText="View" ShowSelectButton="True">
+                </asp:CommandField>
+                <asp:TemplateField HeaderText="ID" Visible="False">
                     <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" 
+                        <asp:Label ID="AlbumId" runat="server" 
                             Text='<%# Eval("AlbumId") %>'></asp:Label>
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Right"></ItemStyle>
@@ -41,7 +43,6 @@
                             DataValueField="ValueId"
                              selectedvalue='<%# Eval("ArtistId") %>'
                              Width="300px" Enabled="false">
-
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
