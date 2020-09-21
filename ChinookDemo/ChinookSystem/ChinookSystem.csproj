@@ -60,6 +60,7 @@
     <Compile Include="Entities\Track.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AlbumArtist.cs" />
+    <Compile Include="ViewModels\AlbumList.cs" />
     <Compile Include="ViewModels\SelectionList.cs" />
   </ItemGroup>
   <ItemGroup>
