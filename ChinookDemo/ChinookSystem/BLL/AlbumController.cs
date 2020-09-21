@@ -89,7 +89,7 @@ namespace ChinookSystem.BLL
                     ReleaseLabel = item.ReleaseLabel
                 };
                 context.Albums.Add(addItem);
-                context.SaveChanges();
+                context.SaveChanges();  //cases entity validation to run
             }
         }
         [DataObjectMethod(DataObjectMethodType.Update, false)]

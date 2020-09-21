@@ -185,6 +185,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
+    <Content Include="SamplePages\ListViewODSCRUD.aspx" />
     <Content Include="SamplePages\SearchByDDL.aspx" />
     <Content Include="SamplePages\TestPage.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -461,6 +462,13 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamplePages\ListViewODSCRUD.aspx.cs">
+      <DependentUpon>ListViewODSCRUD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\ListViewODSCRUD.aspx.designer.cs">
+      <DependentUpon>ListViewODSCRUD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SamplePages\SearchByDDL.aspx.cs">
       <DependentUpon>SearchByDDL.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
