@@ -187,6 +187,7 @@
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
     <Content Include="SamplePages\GridViewODS.aspx" />
+    <Content Include="SamplePages\LinqPadToAppQuery.aspx" />
     <Content Include="SamplePages\ListViewODSCRUD.aspx" />
     <Content Include="SamplePages\SearchByDDL.aspx" />
     <Content Include="SamplePages\TestPage.aspx" />
@@ -471,6 +472,13 @@
     </Compile>
     <Compile Include="SamplePages\GridViewODS.aspx.designer.cs">
       <DependentUpon>GridViewODS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\LinqPadToAppQuery.aspx.cs">
+      <DependentUpon>LinqPadToAppQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\LinqPadToAppQuery.aspx.designer.cs">
+      <DependentUpon>LinqPadToAppQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="SamplePages\ListViewODSCRUD.aspx.cs">
       <DependentUpon>ListViewODSCRUD.aspx</DependentUpon>
