@@ -119,6 +119,10 @@
                                         href="~/SamplePages/LinqPadToAppQuery.aspx"
                                         style="color:black" runat="server">
                                    Move LinqPad query to web app</a>
+                                <a class="dropdown-item"
+                                        href="~/SamplePages/ODSRepeater.aspx"
+                                        style="color:black" runat="server">
+                                   Repeater Control using nested query</a>
                             </div>
                          </li>
                          <li class="nav-item">
@@ -157,7 +161,7 @@
             </div>
         </div>
 
-        <div class="container body-content">
+        <div class="container-fluid">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
