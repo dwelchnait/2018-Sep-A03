@@ -189,6 +189,7 @@
     <Content Include="SamplePages\GridViewODS.aspx" />
     <Content Include="SamplePages\LinqPadToAppQuery.aspx" />
     <Content Include="SamplePages\ListViewODSCRUD.aspx" />
+    <Content Include="SamplePages\ManagePlaylist.aspx" />
     <Content Include="SamplePages\ODSRepeater.aspx" />
     <Content Include="SamplePages\SearchByDDL.aspx" />
     <Content Include="SamplePages\TestPage.aspx" />
@@ -487,6 +488,13 @@
     </Compile>
     <Compile Include="SamplePages\ListViewODSCRUD.aspx.designer.cs">
       <DependentUpon>ListViewODSCRUD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\ManagePlaylist.aspx.cs">
+      <DependentUpon>ManagePlaylist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\ManagePlaylist.aspx.designer.cs">
+      <DependentUpon>ManagePlaylist.aspx</DependentUpon>
     </Compile>
     <Compile Include="SamplePages\ODSRepeater.aspx.cs">
       <DependentUpon>ODSRepeater.aspx</DependentUpon>

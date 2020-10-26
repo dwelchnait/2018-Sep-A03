@@ -123,6 +123,10 @@
                                         href="~/SamplePages/ODSRepeater.aspx"
                                         style="color:black" runat="server">
                                    Repeater Control using nested query</a>
+                                 <a class="dropdown-item"
+                                        href="~/SamplePages/ManagePlaylist.aspx"
+                                        style="color:black" runat="server">
+                                   OLTP Sample Manage Playlist</a>
                             </div>
                          </li>
                          <li class="nav-item">

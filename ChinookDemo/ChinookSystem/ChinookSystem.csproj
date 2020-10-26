@@ -56,7 +56,10 @@
     <Compile Include="BLL\AlbumController.cs" />
     <Compile Include="BLL\ArtistController.cs" />
     <Compile Include="BLL\BusinessRuleException.cs" />
+    <Compile Include="BLL\GenreController.cs" />
+    <Compile Include="BLL\MediaTypeController.cs" />
     <Compile Include="BLL\PlayListController.cs" />
+    <Compile Include="BLL\PlaylistTracksController.cs" />
     <Compile Include="BLL\TrackController.cs" />
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\Artist.cs" />
@@ -77,6 +80,9 @@
     <Compile Include="ViewModels\PlayListSong.cs" />
     <Compile Include="ViewModels\SelectionList.cs" />
     <Compile Include="ViewModels\SongItem.cs" />
+    <Compile Include="ViewModels\TrackItem.cs" />
+    <Compile Include="ViewModels\TrackList.cs" />
+    <Compile Include="ViewModels\UserPlaylistTrack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
