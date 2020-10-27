@@ -77,7 +77,25 @@ namespace ChinookSystem.BLL
         {
            
             using (var context = new ChinookSystemContext())
-            { 
+            {
+                //var results = from x in context.Tracks
+                //          where (x.Album.Artist.Name.Contains(arg) && tracksby.Equals("Artist")) ||
+                //                (x.Album.Title.Contains(arg) && tracksby.Equals("Album"))
+                //          orderby x.Name
+                //          select new TrackList
+                //          {
+                //              TrackID = x.TrackId,
+                //              Name = x.Name,
+                //              Title = x.Album.Title,
+                //              ArtistName = x.Album.Artist.Name,
+                //              MediaName = x.MediaType.Name,
+                //              GenreName = x.Genre.Name,
+                //              Composer = x.Composer,
+                //              Milliseconds = x.Milliseconds,
+                //              Bytes = x.Bytes,
+                //              UnitPrice = x.UnitPrice
+                //          };
+
                 IEnumerable<TrackList> results = null;
                 if (tracksby.Equals("Artist"))
                 {
@@ -99,7 +117,7 @@ namespace ChinookSystem.BLL
                                   UnitPrice = x.UnitPrice
                               };
                 }
-                else
+                else if (tracksby.Equals("Album"))
                 {
                     results = from x in context.Tracks
                                   where x.Album.Title.Contains(arg)
@@ -119,7 +137,57 @@ namespace ChinookSystem.BLL
                                       UnitPrice = x.UnitPrice
                                   };
                 }
-                return results.ToList();
+                else if (tracksby.Equals("MediaType"))
+                {
+                    int narg = int.Parse(arg);
+                    results = from x in context.Tracks
+                              where x.MediaTypeId == narg
+
+                              orderby x.Name
+                              select new TrackList
+                              {
+                                  TrackID = x.TrackId,
+                                  Name = x.Name,
+                                  Title = x.Album.Title,
+                                  ArtistName = x.Album.Artist.Name,
+                                  MediaName = x.MediaType.Name,
+                                  GenreName = x.Genre.Name,
+                                  Composer = x.Composer,
+                                  Milliseconds = x.Milliseconds,
+                                  Bytes = x.Bytes,
+                                  UnitPrice = x.UnitPrice
+                              };
+                }
+                else if (tracksby.Equals("Genre"))
+                {
+                    int narg = int.Parse(arg);
+                    results = from x in context.Tracks
+                              where x.GenreId == narg
+
+                              orderby x.Name
+                              select new TrackList
+                              {
+                                  TrackID = x.TrackId,
+                                  Name = x.Name,
+                                  Title = x.Album.Title,
+                                  ArtistName = x.Album.Artist.Name,
+                                  MediaName = x.MediaType.Name,
+                                  GenreName = x.Genre.Name,
+                                  Composer = x.Composer,
+                                  Milliseconds = x.Milliseconds,
+                                  Bytes = x.Bytes,
+                                  UnitPrice = x.UnitPrice
+                              };
+                }
+                if (results == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return results.ToList();
+                }
+                
             }
         }//eom
     }

@@ -61,6 +61,7 @@
     <Compile Include="BLL\PlayListController.cs" />
     <Compile Include="BLL\PlaylistTracksController.cs" />
     <Compile Include="BLL\TrackController.cs" />
+    <Compile Include="DAL\ChinookSystemContextBad.cs" />
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="DAL\ChinookSystemContext.cs" />
