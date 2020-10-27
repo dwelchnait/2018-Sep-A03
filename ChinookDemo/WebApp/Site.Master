@@ -15,6 +15,9 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <%-- link to personalization custom css file --%>
     <link href="Content/CustomStyles.css" rel="stylesheet" />
+        <%--<link href="css/font-awesome.min.css" rel="stylesheet" />--%>
+    <%-- font-awesome in bootstrap 3 --%>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
     <form runat="server">
