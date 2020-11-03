@@ -115,29 +115,120 @@ namespace ChinookSystem.BLL
                         //this class takes in a List<string> representing all errors to the handled
                         errors.Add("Track already on the playlist. Duplicates are not allowed");
                     }
-
-                    //handle the creation of the PlaylistTrack record
-                    //all validation has been passed????
-                    if (errors.Count > 0)
-                    {
-                        //no, at least one error was found
-                        throw new BusinessRuleException("Adding a Track", errors);
-                    }
-                    else
-                    {
-                        //good to go
-
-                    }
                 }
+                //create/load/add a PlaylistTrack
+                newtrack = new PlaylistTrack();
 
-            } //this ensures that the sql connection closes properly
+                //load of instance data
+                    
+                newtrack.TrackId = trackid;
+                newtrack.TrackNumber = tracknumber;
+
+                //scenario 1) New playlist
+                //   the exists instance is a NEW instance that is YET
+                //       to be placed on the sql database
+                //   THEREFORE it DOES NOT YET have a primary key value!!!!!!!
+                //   the current value of the PlaylistId on the exists instance
+                //      is the default system value for an integer (0)
+                //scenario 2) Existing playlist
+                //   the exists instance has the PlaylistId value
+
+                //the solution to both these scenarios is to use
+                //  navigational properties during the ACTUAL .Add command
+                //the entityframework will on your behave ensure that the
+                //  adding of records to the database will be done in the
+                //  appropriate order AND add the missing compound primary key 
+                //  value (PlaylistId) to the child record newtrack;
+                exists.PlaylistTracks.Add(newtrack);
+
+                //handle the creation of the PlaylistTrack record
+                //all validation has been passed????
+                if (errors.Count > 0)
+                {
+                    //no, at least one error was found
+                    throw new BusinessRuleException("Adding a Track", errors);
+                }
+                else
+                {
+                    //good to go
+                    //COMMITTING all staged work
+                    context.SaveChanges();
+                }
+             } //this ensures that the sql connection closes properly
         }//eom
         public void MoveTrack(string username, string playlistname, int trackid, int tracknumber, string direction)
         {
             using (var context = new ChinookSystemContext())
             {
-                //code to go here 
+                //trx
+                //check to see if the playlist exists
+                //  no: error exception
+                //  yes:
+                //      check to see if song exists
+                //      no: error exception
+                //      yes:
+                //          //up
+                //          //check to see if song is at the top
+                //          //  yes: error exception
+                //          //   no:
+                //          //      find record above (tracknumber -1)
+                //          //      above record tracknumber modified to tracknumber + 1
+                //          //      selected record tracknumber modified to tracknumber -1
+                //          //down
+                //          //check to see if song is at the bottom
+                //          //  yes: error exception
+                //          //   no:
+                //          //      find record below (tracknumber +1)
+                //          //      below record tracknumber modified to tracknumber - 1
+                //          //      selected record tracknumber modified to tracknumber +1
+                //stage records update
+                //commit
+               
 
+                List<string> errors = new List<string>(); //for use by BusinessRuleException
+                PlaylistTrack moveTrack = null;
+                PlaylistTrack otherTrack = null;
+                Playlist exists = (from x in context.Playlists
+                                   where x.Name.Equals(playlistname)
+                                    && x.UserName.Equals(username)
+                                   select x).FirstOrDefault();
+                if (exists == null)
+                {
+                    errors.Add("Play list does not exist.");
+                }
+                else
+                {
+                    moveTrack = (from x in context.PlaylistTracks
+                                 where x.Playlist.Name.Equals(playlistname)
+                                  && x.Playlist.UserName.Equals(username)
+                                  && x.TrackId == trackid
+                                 select x).FirstOrDefault();
+                    if (moveTrack == null)
+                    {
+                        errors.Add("Play list track does not exist.");
+                    }
+                    else
+                    {
+                        if (direction.Equals("up"))
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                if (errors.Count > 0)
+                {
+                    throw new BusinessRuleException("Move Track", errors);
+                }
+                else
+                {
+                    //stage
+                    //commit
+                    context.SaveChanges();
+                }
             }
         }//eom
 
