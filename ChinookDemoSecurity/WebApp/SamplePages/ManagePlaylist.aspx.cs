@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 #region Additonal Namespaces
-//using WebApp.Security;
 using ChinookSystem.BLL;
 using ChinookSystem.ViewModels;
+using WebApp.Security;
 #endregion
 
 namespace WebApp.SamplePages
@@ -18,17 +18,40 @@ namespace WebApp.SamplePages
         protected void Page_Load(object sender, EventArgs e)
         {
             TracksSelectionList.DataSource = null;
-            //is the user logged in
+
+            //test our security
+            //are you logged in?
             if (Request.IsAuthenticated)
             {
-                //do you have the right to be on this page
+                //checks to see if you are allowed on the page
                 if (User.IsInRole("Customers"))
                 {
-                    MessageUserControl.ShowInfo("Security", "You are allowed on the page");
+
+                    //obtain the CustomerId on the security User record
+                    SecurityController ssysmgr = new SecurityController();
+                    //User.Identity.Name gives us the current user name
+                    int? customerid = ssysmgr.GetCurrentUserCustomerId(User.Identity.Name);
+
+                    //need to convert the int? to an int for the call to the CustomerController method
+                    //int custid = customerid == null ? default(int) : int.Parse(customerid.ToString());
+                    int custid = customerid ?? default(int);
+
+                    MessageUserControl.TryRun(() => {
+                        CustomerController csysmgr = new CustomerController();
+                        CustomerItem item = csysmgr.Customer_FindByID(custid);
+                        if (item == null)
+                        {
+                            LoggedUser.Text = "Unknown";
+                            throw new Exception("Logged customer cannot be found on file ");
+                        }
+                        else
+                        {
+                            LoggedUser.Text = item.LastName + ", " + item.FirstName;
+                        }
+                    });
                 }
                 else
                 {
-                    //not allowed
                     Response.Redirect("~/SamplePages/AccessDenied.aspx");
                 }
             }
@@ -37,6 +60,7 @@ namespace WebApp.SamplePages
                 Response.Redirect("~/Account/Login.aspx");
             }
         }
+
 
         #region  Error Handling
         protected void SelectCheckForException(object sender,

@@ -7,9 +7,16 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<div>
-    <h1>Manage Playlists (UI/UX TRX Sample)</h1>
+<div class="row">
+    <div class="col-10">
+        <h1>Manage Playlists (UI/UX TRX Sample)</h1>
+    </div>
+    <div class="col-2">
+        <asp:Label ID="Label7" runat="server" Text="User: "></asp:Label>&nbsp;
+        <asp:Label ID="LoggedUser" runat="server"></asp:Label>
+    </div>
 </div>
+
 
 <div class="row">
     <div class="offset-1">
