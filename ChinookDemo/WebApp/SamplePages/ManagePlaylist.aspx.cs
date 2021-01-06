@@ -231,8 +231,7 @@ namespace WebApp.SamplePages
                             "Song is at the bottom of the list already. No move is necessary.");
                         }
                         else
-                        {
-                            //move the track
+                        {                            //move the track
                             MoveTrack(trackid, tracknumber, "down");
                         }
                     }
