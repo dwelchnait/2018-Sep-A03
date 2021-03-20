@@ -89,23 +89,6 @@ namespace WebApp.SamplePages
 
         }
 
-        protected void MediaTypeFetch_Click(object sender, EventArgs e)
-        {
-
-            TracksBy.Text = "MediaType";
-            //the ddl does not have a prompt line, therefore
-            //    to selection test is requried
-            //remember: SelectedValue returns contents as a string
-            SearchArg.Text = MediaTypeDDL.SelectedValue;
- 
-            //to force the listview to rebind (to execute again)
-            //NOTE there is NO DataSource assignment as that is
-            //     accomplished using the ODS and a DataSourceID parameter
-            //     on the ListView control
-            TracksSelectionList.DataBind();
-
-        }
-
         protected void GenreFetch_Click(object sender, EventArgs e)
         {
             TracksBy.Text = "Genre";

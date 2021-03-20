@@ -41,37 +41,7 @@ namespace ChinookSystem.BLL
             }
         }
 
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
-        //public List<TrackItem> Track_List()
-        //{
-        //    using (var context = new ChinookSystemContext())
-        //    {
-        //        return context.Tracks.ToList();
-        //    }
-        //}
-
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
-        //public TrackItem Track_Find(int trackid)
-        //{
-        //    using (var context = new ChinookSystemContext())
-        //    {
-        //        return context.Tracks.Find(trackid);
-        //    }
-        //}
-
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
-        //public List<TrackItem> Track_GetByAlbumId(int albumid)
-        //{
-        //    using (var context = new ChinookSystemContext())
-        //    {
-        //        var results = from aRowOn in context.Tracks
-        //                      where aRowOn.AlbumId.HasValue
-        //                      && aRowOn.AlbumId == albumid
-        //                      select aRowOn;
-        //        return results.ToList();
-        //    }
-        //}
-
+       
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<TrackList> List_TracksForPlaylistSelection(string tracksby, string arg)
         {
@@ -88,7 +58,6 @@ namespace ChinookSystem.BLL
                 //              Name = x.Name,
                 //              Title = x.Album.Title,
                 //              ArtistName = x.Album.Artist.Name,
-                //              MediaName = x.MediaType.Name,
                 //              GenreName = x.Genre.Name,
                 //              Composer = x.Composer,
                 //              Milliseconds = x.Milliseconds,
@@ -109,7 +78,6 @@ namespace ChinookSystem.BLL
                                   Name = x.Name,
                                   Title = x.Album.Title,
                                   ArtistName = x.Album.Artist.Name,
-                                  MediaName = x.MediaType.Name,
                                   GenreName = x.Genre.Name,
                                   Composer = x.Composer,
                                   Milliseconds = x.Milliseconds,
@@ -129,34 +97,12 @@ namespace ChinookSystem.BLL
                                       Name = x.Name,
                                       Title = x.Album.Title,
                                       ArtistName = x.Album.Artist.Name,
-                                      MediaName = x.MediaType.Name,
                                       GenreName = x.Genre.Name,
                                       Composer = x.Composer,
                                       Milliseconds = x.Milliseconds,
                                       Bytes = x.Bytes,
                                       UnitPrice = x.UnitPrice
                                   };
-                }
-                else if (tracksby.Equals("MediaType"))
-                {
-                    int narg = int.Parse(arg);
-                    results = from x in context.Tracks
-                              where x.MediaTypeId == narg
-
-                              orderby x.Name
-                              select new TrackList
-                              {
-                                  TrackID = x.TrackId,
-                                  Name = x.Name,
-                                  Title = x.Album.Title,
-                                  ArtistName = x.Album.Artist.Name,
-                                  MediaName = x.MediaType.Name,
-                                  GenreName = x.Genre.Name,
-                                  Composer = x.Composer,
-                                  Milliseconds = x.Milliseconds,
-                                  Bytes = x.Bytes,
-                                  UnitPrice = x.UnitPrice
-                              };
                 }
                 else if (tracksby.Equals("Genre"))
                 {
@@ -171,7 +117,6 @@ namespace ChinookSystem.BLL
                                   Name = x.Name,
                                   Title = x.Album.Title,
                                   ArtistName = x.Album.Artist.Name,
-                                  MediaName = x.MediaType.Name,
                                   GenreName = x.Genre.Name,
                                   Composer = x.Composer,
                                   Milliseconds = x.Milliseconds,

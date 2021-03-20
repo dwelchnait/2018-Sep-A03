@@ -12,7 +12,6 @@ namespace ChinookSystem.ViewModels
         public string Name { get; set; }
         public string Title { get; set; }
         public string ArtistName { get; set; }
-        public string MediaName { get; set; }
         public string GenreName { get; set; }
         public string Composer { get; set; }
         public int Milliseconds { get; set; }

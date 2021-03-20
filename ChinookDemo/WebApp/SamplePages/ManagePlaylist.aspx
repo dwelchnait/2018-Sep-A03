@@ -15,12 +15,13 @@
     <div class="offset-1">
         <%--Add MessageUserControl--%>
         <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
+        <br /><br />
     </div>
 </div>
 
 
     <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
         <asp:Label ID="Label1" runat="server" Text="Artist" ></asp:Label><br />
         <asp:TextBox ID="ArtistName" runat="server"
             Width="150px" placeholder="artist name">
@@ -28,16 +29,7 @@
         <asp:Button ID="ArtistFetch" runat="server" Text="Fetch" 
             OnClick="ArtistFetch_Click"/>
         <br /><br />
-         <asp:Label ID="Label2" runat="server" Text="Media"></asp:Label><br />
-        <asp:DropDownList ID="MediaTypeDDL" runat="server"
-            Width="150px" DataSourceID="MediaTypeDDLODS" 
-            DataTextField="DisplayText" 
-            DataValueField="ValueId">
-        </asp:DropDownList><br />
-        <asp:Button ID="MediaTypeFetch" runat="server" 
-            Text="Fetch" OnClick="MediaTypeFetch_Click"  />
-        <br /><br />
-         <asp:Label ID="Label3" runat="server" Text="Genre"></asp:Label><br />
+        <asp:Label ID="Label3" runat="server" Text="Genre"></asp:Label><br />
         <asp:DropDownList ID="GenreDDL" runat="server"
             Width="150px" DataSourceID="GenreDDLODS" 
             DataTextField="DisplayText" DataValueField="ValueId">
@@ -77,8 +69,6 @@
                     <td>
                         <asp:Label Text='<%# Eval("ArtistName") %>' runat="server" ID="ArtistNameLabel" /></td>
                     <td>
-                        <asp:Label Text='<%# Eval("MediaName") %>' runat="server" ID="MediaNameLabel" /></td>
-                    <td>
                         <asp:Label Text='<%# Eval("GenreName") %>' runat="server" ID="GenreNameLabel" /></td>
                     <td>
                         <asp:Label Text='<%# Eval("Composer") %>' runat="server" ID="ComposerLabel" /></td>
@@ -115,8 +105,7 @@
                         <asp:Label Text='<%# Eval("Title") %>' runat="server" ID="TitleLabel" /></td>
                     <td>
                         <asp:Label Text='<%# Eval("ArtistName") %>' runat="server" ID="ArtistNameLabel" /></td>
-                    <td>
-                        <asp:Label Text='<%# Eval("MediaName") %>' runat="server" ID="MediaNameLabel" /></td>
+                   
                     <td>
                         <asp:Label Text='<%# Eval("GenreName") %>' runat="server" ID="GenreNameLabel" /></td>
                     <td>
@@ -139,7 +128,6 @@
                                     <th runat="server">Name</th>
                                     <th runat="server">Title</th>
                                     <th runat="server">Artist</th>
-                                    <th runat="server">Media</th>
                                     <th runat="server">Genre</th>
                                     <th runat="server">Composer</th>
                                     <th runat="server">Msec</th>
@@ -151,7 +139,7 @@
                         </td>
                     </tr>
                     <tr runat="server">
-                        <td runat="server" style="text-align: center; background-color: #5D7B9D; font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF">
+                        <td runat="server" style="text-align: center; background-color: #c0c0c0; font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF">
                             <asp:DataPager runat="server" ID="DataPager1" PageSize="5" PagedControlID="TracksSelectionList">
                                 <Fields>
                                     <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"></asp:NextPreviousPagerField>
@@ -257,12 +245,7 @@
                 Type="String"></asp:ControlParameter>
         </SelectParameters>
     </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="MediaTypeDDLODS" runat="server" 
-        OldValuesParameterFormatString="original_{0}" 
-        SelectMethod="List_MediaTypeNames" 
-         OnSelected="SelectCheckForException"
-        TypeName="ChinookSystem.BLL.MediaTypeController">
-    </asp:ObjectDataSource>
+  
     <asp:ObjectDataSource ID="GenreDDLODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="List_GenreNames" 
